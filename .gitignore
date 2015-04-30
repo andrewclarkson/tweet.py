@@ -1,2 +1,3 @@
 *.pyc
 __pycache__/
+.travis/tweet.pem
