@@ -7,6 +7,8 @@ script: python test.py
 after_success:
 - chmod 600 .travis/tweet.pem
 - ssh-add .travis/tweet.pem
+- mkdir -p ~/.ssh
+- cat .travis/host >> ~/.ssh/known_hosts
 - git remote add production dokku@52.1.112.110:tweet
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && git push production master
 
