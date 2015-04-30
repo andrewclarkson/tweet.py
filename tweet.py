@@ -10,8 +10,8 @@ class Tweet(Model):
     """
     The data type for a tweet
     """
-    created = DateTimeField
-    content = TextField
+    created = DateTimeField()
+    content = TextField()
 
     class Meta:
         database = db
