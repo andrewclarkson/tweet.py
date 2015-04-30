@@ -1,6 +1,7 @@
 import os
 from flask import *
 from datetime import datetime
+from peewee import *
 import pw_database_url
 from flask_peewee.db import Database
 
