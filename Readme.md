@@ -113,7 +113,7 @@ Hide it from git
 
     echo .travis/<project>.pem >> .gitignore
 
-Create a `.travis.yml` file
+Create a `.travis.yml` file according to [this guide](http://docs.travis-ci.com/user/build-configuration/#.travis.yml-file%3A-what-it-is-and-how-it-is-used)
 
 Log into travis
 
@@ -131,3 +131,20 @@ Edit the `.travis.yml` file to reflect the move.
 Change `-in <project>.pem.enc` to `-in .travis/<project>.pem.enc`
 
 
+Add a `after_success:` section like so
+
+    - chmod 600 .travis/<project>.pem
+    - mkdir -p ~/.ssh
+    - cp .travis/<project>.pem ~/.ssh
+    - cat .travis/host >> ~/.ssh/config
+    - git remote add production dokku@<server address>:<project>
+    - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && git push <name> master
+
+
+Then create a `.travis/host` to make travis use the correct key:
+
+    Host <server address>
+        StrictHostKeyChecking no
+        IdentityFile ~/.ssh/<project>.pem
+
+Then register your project on [travis-ci.org](https://travis-ci.org) and push away.
