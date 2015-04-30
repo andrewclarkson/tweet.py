@@ -11,7 +11,7 @@ addons:
 before_script:
     - psql -c 'create database tweets;' -U postgres
 
-env: DATABASE_URL='postgres://postgresql@localhost:5432/tweets'
+env: DATABASE_URL='postgres://postgres@localhost:5432/tweets'
 
 after_success:
     - chmod 600 .travis/tweet.pem
