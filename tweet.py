@@ -32,7 +32,7 @@ def strftime(date):
 
 @app.route('/', methods=['GET'])
 def index():
-    query = Tweet.select(Tweet.id, Tweet.content)
+    query = Tweet.select(Tweet.id, Tweet.created, Tweet.content)
     tweets = list(query)
     return render_template('index.html', tweets=tweets)
 
