@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block title %} All the tweets {% endblock %}
+{% block content %}
+    <a href="{{url_for('new')}}">Compose a Tweet</a>
+    <ul id="tweets">
+    {% for tweet in tweets %}
+        <li class="tweet">
+            <p>{{ tweet.content }}</p>
+            <p>Posted at {{tweet.created | strftime }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

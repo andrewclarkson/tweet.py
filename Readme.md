@@ -148,3 +148,23 @@ Then create a `.travis/host` to make travis use the correct key:
         IdentityFile ~/.ssh/<project>.pem
 
 Then register your project on [travis-ci.org](https://travis-ci.org) and push away.
+
+## Adding Complexity
+
+Add on a database
+
+### On the server
+
+Create the database
+
+    dokku postgresql:create <db>
+
+And link it
+
+    dokku postgresql:link <project> <db>
+
+Then you can get the full url
+
+    dokku config <project>
+
+
