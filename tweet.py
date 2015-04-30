@@ -23,8 +23,6 @@ class Tweet(db.Model):
     content = TextField()
 
     class Meta:
-        database = db
-        db_table = 'tweets'
         order_by = ('-created',)
 
 
