@@ -4,11 +4,13 @@ python:
 install: pip install -r requirements.txt
 script: python test.py
 
+addons:
+    ssh_known_hosts: 52.1.112.110
+
 after_success:
-- chmod 600 .travis/tweet.pem
-- ssh-add .travis/tweet.pem
 - mkdir -p ~/.ssh
-- cat .travis/host >> ~/.ssh/known_hosts
+- cp .travis/tweet.pem ~/.ssh
+- cat .travis/host >> ~/.ssh/config
 - git remote add production dokku@52.1.112.110:tweet
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && git push production master
 
