@@ -7,8 +7,7 @@ class HelloTestCase(TestCase):
     def setUp(self):
         app.config['TESTING'] = True
         self.app = app.test_client()
-        db.connect()
-        db.create_tables([Tweet])
+        Tweet.create_tables(fail_silently=True)
 
     def test_compose_link(self):
         res = self.app.get('/')
