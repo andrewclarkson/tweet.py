@@ -28,7 +28,7 @@ class Tweet(db.Model):
 
 @app.template_filter('strftime')
 def strftime(date):
-        return date.strftime('%b %d, %Y')
+        return date.strftime('%a, %b %d, %Y %I %p')
 
 @app.route('/', methods=['GET'])
 def index():
