@@ -8,6 +8,7 @@ addons:
     ssh_known_hosts: 52.1.112.110
 
 after_success:
+- chmod 600 .travis/tweet.pem
 - mkdir -p ~/.ssh
 - cp .travis/tweet.pem ~/.ssh
 - cat .travis/host >> ~/.ssh/config
