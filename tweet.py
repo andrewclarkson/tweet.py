@@ -1,12 +1,20 @@
 import os
 from flask import *
 from datetime import datetime
-from peewee import *
+import pw_database_url
+from flask_peewee.db import Database
+
+
+DATABASE = pw_database_url.config()
+DEBUG = True
+SECRET_KEY = 'ssshhhh'
 
 app = Flask('tweet')
-db = PostgresqlDatabase(os.environ['DATABASE_URL'])
+app.config.from_object(__name__)
 
-class Tweet(Model):
+db = Database(app)
+
+class Tweet(db.Model):
     """
     The data type for a tweet
     """

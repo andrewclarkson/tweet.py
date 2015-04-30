@@ -4,4 +4,5 @@ Jinja2==2.7.3
 MarkupSafe==0.23
 peewee==2.6.0
 psycopg2==2.6
+pw-database-url==0.2.0
 Werkzeug==0.10.4
